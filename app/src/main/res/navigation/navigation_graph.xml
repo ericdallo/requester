@@ -4,7 +4,7 @@
             app:startDestination="@id/listRequestsFragment">
     <fragment
             android:id="@+id/listRequestsFragment"
-            android:name="com.gregcodes.requester.ListRequestsFragment"
+            android:name="com.gregcodes.requester.list.ListRequestsFragment"
             android:label="fragment_list_requests"
             tools:layout="@layout/fragment_list_requests">
         <action android:id="@+id/action_listRequestsFragment_to_createRequestFragment"

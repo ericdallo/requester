@@ -15,4 +15,6 @@
     <string name="value">Value</string>
     <string name="request_body">Body</string>
     <string name="save_request">Save request</string>
+    <string name="invalid_request_name">Input a name for this connection</string>
+    <string name="invalid_request_address">Input the connection IP or DNS address</string>
 </resources>
