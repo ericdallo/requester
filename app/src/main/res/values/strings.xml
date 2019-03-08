@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Requester</string>
+
+    <string name="request_name">Connection name</string>
+    <string name="request_address">DNS / IP</string>
+    <string name="request_verb">Verb</string>
+    <string name="request_post_verb">POST</string>
+    <string name="request_get_verb">GET</string>
+    <string name="request_put_verb">PUT</string>
+    <string name="request_patch_verb">PATCH</string>
+    <string name="request_delete_verb">DELETE</string>
+    <string name="create_request">Create request</string>
+    <string name="content_type">Headers</string>
+    <string name="key">Key</string>
+    <string name="value">Value</string>
+    <string name="request_body">Body</string>
+    <string name="save_request">Save request</string>
+</resources>

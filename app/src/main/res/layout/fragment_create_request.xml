@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    
+    <data>
+        <variable name="viewModel" type="com.gregcodes.requester.save.CreateRequestViewModel"/>
+    </data>  
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 xmlns:tools="http://schemas.android.com/tools"
+                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 tools:context=".save.CreateRequestFragment">
+
+        <LinearLayout
+                android:id="@+id/createRequestBasicInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_horizontal"
+                      android:paddingTop="5dp"
+                      android:textSize="24sp"
+                      android:layout_marginTop="20dp"
+                      android:textStyle="bold"
+                      android:paddingBottom="5dp"
+                      android:text="@string/create_request"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/requestName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:hint="@string/request_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={viewModel.name}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+
+                <Spinner
+                        android:id="@+id/requestProtocol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:entries="@array/request_protocols"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/requestAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingEnd="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingStart="0dp"
+                        android:paddingLeft="0dp"
+                        android:hint="@string/request_address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:text="@={viewModel.address}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingTop="5dp"
+                      android:textSize="20sp"
+                      android:layout_marginTop="20dp"
+                      android:textStyle="bold"
+                      android:paddingBottom="8dp"
+                      android:paddingStart="10dp"
+                      android:paddingLeft="10dp"
+                      android:text="@string/request_verb"/>
+
+            <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/requestGetVerb"
+                    android:orientation="horizontal">
+
+                <RadioButton
+                        android:id="@+id/requestGetVerb"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/request_get_verb"/>
+                <RadioButton
+                        android:id="@+id/requestPostVerb"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/request_post_verb"/>
+                <RadioButton
+                        android:id="@+id/requestPutVerb"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/request_put_verb"/>
+                <RadioButton
+                        android:id="@+id/requestPatchVerb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/request_patch_verb"/>
+                <RadioButton
+                        android:id="@+id/requestDeleteVerb"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/request_delete_verb"/>
+            </RadioGroup>
+
+            <LinearLayout android:id="@+id/headerLayout" android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:paddingTop="5dp"
+                          android:textSize="20sp"
+                          android:layout_marginTop="20dp"
+                          android:textStyle="bold"
+                          android:paddingBottom="8dp"
+                          android:paddingStart="10dp"
+                          android:paddingLeft="10dp"
+                          android:text="@string/content_type"/>
+
+                <fragment android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:id="@+id/firstHeaderFragment"
+                          android:name="com.gregcodes.requester.save.RequestHeaderFragment"
+                          tools:layout="@layout/fragment_header"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/requestBodyLayout"
+                    android:visibility="invisible"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:paddingTop="5dp"
+                          android:textSize="20sp"
+                          android:layout_marginTop="20dp"
+                          android:textStyle="bold"
+                          android:paddingBottom="8dp"
+                          android:paddingStart="10dp"
+                          android:paddingLeft="10dp"
+                          android:text="@string/request_body"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:lines="6"
+                        android:scrollHorizontally="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addRequestButton"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:layout_gravity="bottom|end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="24dp"
+                app:srcCompat="@drawable/ic_check_white_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{() -> viewModel.onSaveClicked()}"
+        />
+
+    </FrameLayout>
+</layout>

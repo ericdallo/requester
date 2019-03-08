@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:id="@+id/navigation_graph"
+            app:startDestination="@id/listRequestsFragment">
+    <fragment
+            android:id="@+id/listRequestsFragment"
+            android:name="com.gregcodes.requester.ListRequestsFragment"
+            android:label="fragment_list_requests"
+            tools:layout="@layout/fragment_list_requests">
+        <action android:id="@+id/action_listRequestsFragment_to_createRequestFragment"
+                app:destination="@+id/createRequestFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+            android:id="@+id/createRequestFragment"
+            android:name="com.gregcodes.requester.save.CreateRequestFragment"
+            android:label="fragment_create_request"
+            tools:layout="@layout/fragment_create_request"/>
+</navigation>
