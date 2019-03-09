@@ -6,6 +6,13 @@
              android:layout_height="match_parent"
              tools:context="com.gregcodes.requester.list.ListRequestsFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addRequestButton"
             style="@style/Widget.MaterialComponents.FloatingActionButton"

@@ -1,7 +1,6 @@
 package com.gregcodes.requester.save
 
 import android.view.View
-import android.widget.EditText
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -17,13 +16,13 @@ class CreateRequestViewModel : ViewModel() {
     fun init() {
         request = CreateRequestFields()
 
-        onFocusName = View.OnFocusChangeListener { view, focused ->
+        onFocusName = View.OnFocusChangeListener { _, focused ->
             if (!focused) {
                 request.validateName(true)
             }
         }
 
-        onFocusAddress = View.OnFocusChangeListener { view, focused ->
+        onFocusAddress = View.OnFocusChangeListener { _, focused ->
             if (!focused) {
                 request.validateAddress(true)
             }
