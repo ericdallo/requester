@@ -1,5 +1,6 @@
 package com.gregcodes.requester.list
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -13,6 +14,7 @@ import io.reactivex.schedulers.Schedulers
 class ListRequestViewModel(application: Application) : AndroidViewModel(application) {
 
     private var requestList: MutableLiveData<List<Request>>? = null
+
     private val requestRepository: RequestRepository  by lazy {
         AppDatabase.getInstance(application).getRequestRepository()
     }
@@ -26,6 +28,7 @@ class ListRequestViewModel(application: Application) : AndroidViewModel(applicat
         return requestList as MutableLiveData<List<Request>>
     }
 
+    @SuppressLint("CheckResult")
     private fun getRequestsFromDatabase() {
         requestRepository.findAll()
             .observeOn(AndroidSchedulers.mainThread())

@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/navigation_graph"
-            app:startDestination="@id/createRequestFragment">
+            app:startDestination="@id/listRequestsFragment">
     <fragment
             android:id="@+id/listRequestsFragment"
             android:name="com.gregcodes.requester.list.ListRequestsFragment"
@@ -11,7 +11,7 @@
         <action android:id="@+id/action_listRequestsFragment_to_createRequestFragment"
                 app:destination="@id/createRequestFragment"
                 app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"/>
+                app:exitAnim="@anim/slide_out_left" app:launchSingleTop="false"/>
     </fragment>
     <fragment
             android:id="@+id/createRequestFragment"
@@ -19,6 +19,7 @@
             android:label="fragment_create_request"
             tools:layout="@layout/fragment_create_request">
         <action android:id="@+id/action_createRequestFragment_to_listRequestsFragment"
-                app:destination="@id/listRequestsFragment" app:launchSingleTop="false"/>
+                app:destination="@id/listRequestsFragment" app:launchSingleTop="false"
+                app:enterAnim="@anim/slide_out_left" app:exitAnim="@anim/slide_in_right"/>
     </fragment>
 </navigation>

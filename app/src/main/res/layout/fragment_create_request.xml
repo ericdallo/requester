@@ -152,10 +152,46 @@
                           android:paddingLeft="10dp"
                           android:text="@string/content_type"/>
 
-                <fragment android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:id="@+id/firstHeaderFragment"
-                          android:name="com.gregcodes.requester.save.RequestHeaderFragment"
-                          tools:layout="@layout/fragment_header"/>
+                <!--<fragment android:layout_width="match_parent" android:layout_height="wrap_content"-->
+                          <!--android:id="@+id/firstHeaderFragment"-->
+                          <!--android:name="com.gregcodes.requester.save.RequestHeaderFragment"-->
+                          <!--tools:layout="@layout/fragment_header"/>-->
+                <LinearLayout
+                        android:id="@+id/headerContainerLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:baselineAligned="false">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0px"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:hint="@string/key">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/headerKey"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="0px"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:hint="@string/value">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/headerValue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 

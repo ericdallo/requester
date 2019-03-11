@@ -14,6 +14,8 @@ import com.gregcodes.requester.R
 import com.gregcodes.requester.Request
 import com.gregcodes.requester.RequestRepository
 import com.gregcodes.requester.databinding.FragmentCreateRequestBinding
+import com.gregcodes.requester.databinding.FragmentListRequestsBinding
+import com.gregcodes.requester.list.ListRequestViewModel
 import com.gregcodes.requester.room.AppDatabase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -25,31 +27,7 @@ class CreateRequestFragment : Fragment() {
     private lateinit var requestRepository: RequestRepository
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_create_request, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        requestRepository = AppDatabase.getInstance(context!!).getRequestRepository()
-
-        initBindings(savedInstanceState)
-
-        viewModel.getSaveButtonClick().observe(this, Observer<CreateRequestFields> {
-            val requestToSave = Request(it.name, it.protocol, it.address, it.verb, it.body)
-
-            requestRepository.save(requestToSave)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe {
-                    Log.d("navigation", "going to home")
-                    Navigation.findNavController(view).navigate(R.id.action_createRequestFragment_to_listRequestsFragment)
-                }
-        })
-    }
-
-    private fun initBindings(savedInstanceState: Bundle?) {
-        val binding = DataBindingUtil.setContentView<FragmentCreateRequestBinding>(activity!!, R.layout.fragment_create_request)
+        val binding = DataBindingUtil.inflate<FragmentCreateRequestBinding>(inflater,  R.layout.fragment_create_request, container, false)
 
         viewModel = ViewModelProviders.of(this).get(CreateRequestViewModel::class.java)
 
@@ -59,5 +37,25 @@ class CreateRequestFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requestRepository = AppDatabase.getInstance(context!!).getRequestRepository()
+
+        viewModel.getSaveButtonClick().observe(this, Observer<CreateRequestFields> {
+            val requestToSave = Request(it.name, it.protocol, it.address, it.verb, it.body)
+
+            requestRepository.save(requestToSave)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    Log.d("navigation", "going to home")
+                    Navigation.findNavController(view).navigate(R.id.listRequestsFragment)
+                }
+        })
     }
 }
