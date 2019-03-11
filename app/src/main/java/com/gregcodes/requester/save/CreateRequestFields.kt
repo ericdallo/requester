@@ -49,7 +49,7 @@ class CreateRequestFields: BaseObservable() {
             hasError = true
         }
 
-        return hasError
+        return !hasError
     }
 
     fun validateName(setMessage: Boolean) : Boolean {
